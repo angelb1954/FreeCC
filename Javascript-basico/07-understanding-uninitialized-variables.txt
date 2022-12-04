@@ -1,0 +1,21 @@
+Comprender las variables no inicializadas
+
+Cuando se declaran variables de JavaScript, tienen un valor inicial de undefined. Si realiza una operación matemática en una undefinedvariable, su resultado será lo NaNque significa "No es un número" . Si concatena una cadena con una undefinedvariable, obtendrá una cadena de undefined.
+
+Inicialice las tres variables a, b, y ccon 5, 10y "I am a"respectivamente para que no sean undefined.
+
+
+
+
+// Only change code below this line
+var a;
+var b;
+var c;
+a=5;
+b=10;
+c="I am a"
+// Only change code above this line
+
+a = a + 1;
+b = b + 5;
+c = c + " String!";

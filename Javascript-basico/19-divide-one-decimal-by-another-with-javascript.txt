@@ -1,0 +1,9 @@
+ivide un decimal por otro con JavaScript
+Ahora dividamos un decimal por otro.
+
+Cambie el 0.0para que quotientsea igual a 2.2.
+
+
+
+
+const quotient = 4.4 / 2.0; // Change this line
