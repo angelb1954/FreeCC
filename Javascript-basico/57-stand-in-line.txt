@@ -1,0 +1,49 @@
+Hacer cola
+
+En informática, una cola es una estructura de datos abstracta donde los elementos se mantienen en orden. Los elementos nuevos se pueden agregar al final de la cola y los elementos antiguos se quitan del frente de la cola.
+
+Escriba una función nextInLineque tome una matriz ( arr) y un número ( item) como argumentos.
+
+Agregue el número al final de la matriz, luego elimine el primer elemento de la matriz.
+
+La nextInLinefunción debería devolver el elemento que se eliminó.
+
+
+
+
+
+
+
+
+ function nextInLine(arr, item) {
+  // Only change code below this line
+  arr.push(item);
+  const removed = arr.shift();
+  return removed;
+  // Only change code above this line
+}
+
+  
+
+// Setup
+let testArr = [1, 2, 3, 4, 5];
+
+// Display code
+console.log("Before: " + JSON.stringify(testArr));
+console.log(nextInLine(testArr, 6));
+console.log("After: " + JSON.stringify(testArr));
+
+
+// Código Explicación
+
+// Empuje el elemento al final de arr .
+// Llame al shift()método en arr para obtener el primer elemento y almacenarlo en eliminado .
+// Retorno eliminado .
+// Ejecución de ejemplo
+
+// Ejecuciones de prueba nextInLine([2,1]);.
+// La nextInLinefunción se llama. arr se convierte en [2]. el artículo se convierte en 1.
+// arr.push(item);Empuja 1 a [2]. Entonces arr es ahora [2,1].
+// const removed = arr.shift();elimina el primer elemento. Entonces arr es ahora [1]. 2 ha sido eliminado y está almacenado en eliminado .
+// return removed;2 se devuelve.
+// Nota : en realidad no es necesario que se elimine la variable . El elemento eliminado se puede devolver directamente usandoreturn arr.shift();.
