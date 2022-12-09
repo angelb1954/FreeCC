@@ -1,0 +1,41 @@
+Comparaciones con el operador lógico o
+
+El operador lógico o|| ( ) devuelve truesi alguno de los operandos es true. De lo contrario, vuelve false.
+
+El operador lógico o se compone de dos símbolos de tubería: ( ||). Por lo general, esto se puede encontrar entre las teclas Retroceso y Intro.
+
+El siguiente patrón debería resultarle familiar por los puntos de ruta anteriores:
+
+if (num > 10) {
+  return "No";
+}
+if (num < 5) {
+  return "No";
+}
+return "Yes";
+regresará Yessolo si numestá entre 5y 10(5 y 10 incluidos). La misma lógica se puede escribir como:
+
+if (num > 10 || num < 5) {
+  return "No";
+}
+return "Yes";
+Combine las dos ifdeclaraciones en una declaración que devuelve la cadena Outsidesi valno está entre 10y 20, inclusive. De lo contrario, devuelve la cadena Inside.
+
+
+
+
+function testLogicalOr(val) {
+  // Only change code below this line
+
+  if (val<10||val>20) {
+    return "Outside";
+  }
+
+  
+  
+
+  // Only change code above this line
+  return "Inside";
+}
+
+testLogicalOr(15);

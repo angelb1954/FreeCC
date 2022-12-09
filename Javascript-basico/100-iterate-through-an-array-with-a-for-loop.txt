@@ -1,0 +1,40 @@
+Iterar a través de una matriz con un bucle For
+
+Una tarea común en JavaScript es iterar a través del contenido de una matriz. Una forma de hacerlo es con un forbucle. Este código enviará cada elemento de la matriz arra la consola:
+
+const arr = [10, 9, 8, 7, 6];
+
+for (let i = 0; i < arr.length; i++) {
+   console.log(arr[i]);
+}
+Recuerde que las matrices tienen indexación basada en cero, lo que significa que el último índice de la matriz es length - 1. Nuestra condición para este ciclo es i < arr.length, que detiene el ciclo cuando ies igual a length. En este caso, la última iteración es, por ejemplo, i === 4cuando ise vuelve igual arr.length - 1y sale 6a la consola. Luego iaumenta a 5, y el ciclo termina porque i < arr.lengthes false.
+
+Declare e inicialice una variable totalen 0. Use un forciclo para agregar el valor de cada elemento de la myArrmatriz a total.
+
+
+
+
+// Setup
+const myArr = [2, 3, 4, 5, 6];
+let total=0;
+for(let i=0;i<myArr.length;i++){
+total+=myArr[i]};
+// Only change code below this line
+
+
+
+Código Explicación
+Inicialización: iobtiene un valor de 0y se usa como contador.
+Condición: el código subsiguiente se ejecuta siempre que isea menor que la longitud de myArr(que es 5; cinco números pero las matrices están basadas en cero).
+Expresión-final: ise incrementa en 1.
+Declaración: La función agrega myArr[i]el valor de totalhasta que la condición no se cumple así:
+total + myArr[0] -> 0 + 2 = 2 
+total + myArr[1] -> 2 + 3 = 5
+total + myArr[2] -> 5 + 4 = 9
+total + myArr[3] -> 9 + 5 = 14 
+total + myArr[4] -> 14 + 6 = 20
+
+
+
+
+

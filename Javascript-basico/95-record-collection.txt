@@ -1,0 +1,64 @@
+Colección de registros
+
+Se le proporciona un objeto literal que representa una parte de su colección de álbumes musicales. Cada álbum tiene un número de identificación único como clave y varias otras propiedades. No todos los álbumes tienen información completa.
+
+Comienza con una updateRecordsfunción que toma un objeto literal, recordsque contiene la colección de álbumes musicales, un id, un prop(como artisto tracks) y un value. Complete la función usando las reglas a continuación para modificar el objeto pasado a la función.
+
+Su función siempre debe devolver el objeto de colección de registros completo.
+Si propno es tracksy valueno es una cadena vacía, actualice o establezca ese álbum propen value.
+Si propes trackspero el álbum no tiene una trackspropiedad, cree una matriz vacía y agréguela value.
+Si propes tracksy valueno es una cadena vacía, agregue valueal final de la tracksmatriz existente del álbum.
+Si valuees una cadena vacía, elimine la proppropiedad dada del álbum.
+Nota: Se utiliza una copia del recordCollectionobjeto para las pruebas.
+
+
+
+
+
+
+// Setup
+const recordCollection = {
+  2548: {
+    albumTitle: 'Slippery When Wet',
+    artist: 'Bon Jovi',
+    tracks: ['Let It Rock', 'You Give Love a Bad Name']
+  },
+  2468: {
+    albumTitle: '1999',
+    artist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette']
+  },
+  1245: {
+    artist: 'Robert Palmer',
+    tracks: []
+  },
+  5439: {
+    albumTitle: 'ABBA Gold'
+  }
+};
+
+// Only change code below this line
+function updateRecords(records, id, prop, value) {
+  if (value === '') {
+    delete records[id][prop];
+  } else if (prop === 'tracks') {
+    records[id][prop] = records[id][prop] || []; // this is called shortcircuit evaluation, see below for explanation
+    records[id][prop].push(value);
+  } else {
+    records[id][prop] = value;
+  }
+  return records;
+}
+
+
+// Código Explicación
+// Primero comprueba si valuees una cadena en blanco. Si es así, la tecla ( prop) se elimina del objeto.
+// Si esa primera verificación no pasa, luego verifica si propes igual a tracks. La tracksmatriz se inicializa si no existe y luego valuese inserta en la tracksmatriz. (Este paso utiliza evaluación de cortocircuito)
+// Si ambas comprobaciones fallan (el significado valueno es una cadena vacía y propno es tracks), entonces se agregan una nueva clave ( prop) y un valor ( value) al objeto, o se actualiza una clave existente si propya existe.
+// Ejecución de ejemplo
+
+// updateRecords(5439, "artist", "ABBA");carreras.
+// valueno es una cadena en blanco, por lo else ifque falla la primera condición de la instrucción.
+// propes igual a "artista", no a "pistas", por lo que la segunda condición de la else ifdeclaración falla.
+// en la cláusula 'else', artist: "ABBA"se agrega al 5439 id.
+// updateRecords(recordCollection, 5439, 'artist', 'ABBA');
