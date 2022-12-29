@@ -1,0 +1,60 @@
+Comprender la terminología de programación funcional
+
+El equipo de FCC tuvo un cambio de humor y ahora quiere dos tipos de té: té verde y té negro. Dato general: Los cambios de humor de los clientes son bastante comunes.
+
+Con esa información, tendremos que volver a visitar la getTeafunción del último desafío para manejar varias solicitudes de té. Podemos modificar getTeapara aceptar una función como parámetro para poder cambiar el tipo de té que prepara. Esto lo hace getTeamás flexible y le da al programador más control cuando cambian las solicitudes del cliente.
+
+Pero primero, cubramos algo de terminología funcional:
+
+Las devoluciones de llamada son las funciones que se deslizan o pasan a otra función para decidir la invocación de esa función. Es posible que los haya visto pasar a otros métodos, por ejemplo, en filter, la función de devolución de llamada le dice a JavaScript los criterios sobre cómo filtrar una matriz.
+
+Las funciones que se pueden asignar a una variable, pasar a otra función o devolver desde otra función como cualquier otro valor normal, se denominan funciones de primera clase. En JavaScript, todas las funciones son funciones de primera clase.
+
+Las funciones que toman una función como argumento, o devuelven una función como valor de retorno, se denominan funciones de orden superior.
+
+Cuando las funciones se pasan o se devuelven desde otra función, las funciones que se pasaron o se devolvieron se pueden llamar lambda .
+
+Prepare 27 tazas de té verde y 13 tazas de té negro y guárdelas en tea4GreenTeamFCCy tea4BlackTeamFCCvariables, respectivamente. Tenga en cuenta que la getTeafunción se ha modificado, por lo que ahora toma una función como primer argumento.
+
+Nota: Los datos (el número de tazas de té) se proporcionan como último argumento. Discutiremos esto más en lecciones posteriores.
+
+
+
+
+
+
+/**
+ * A long process to prepare green tea.
+ * @return {string} A cup of green tea.
+ **/
+const prepareGreenTea = () => "greenTea";
+const prepareBlackTea = () => "blackTea";
+/**
+ * Get given number of cups of tea.
+ * @param {function():string} prepareTea The type of tea preparing function.
+ * @param {number} numOfCups Number of required cups of tea.
+ * @return {Array<string>} Given amount of tea cups.
+ **/
+const getTea = (prepareTea, numOfCups) => {
+  const teaCups = [];
+
+  for (let cups = 1; cups <= numOfCups; cups += 1) {
+    const teaCup = prepareTea();
+    teaCups.push(teaCup);
+  }
+
+  return teaCups;
+};
+
+// Add your code below this line
+const tea4GreenTeamFCC = getTea(prepareGreenTea, 27); // :)
+const tea4BlackTeamFCC = getTea(prepareBlackTea, 13); // :)
+// Add your code above this line
+
+console.log(tea4GreenTeamFCC, tea4BlackTeamFCC);
+
+
+// Código Explicación
+// En la solución anterior, pasamos las funciones prepareGreenTea()y prepareBlackTea()como parámetros o funciones de devolución de llamada para las getTea()funciones que se asignan a nuestras dos variables constantes tea4BlackTeamFCC
+// y tea4GreenTeamFCC.
+// De esta forma, no se modifican las variables globales y tenemos la opción de agregar un número ilimitado de diferentes opciones de prepareTea() métodos, ya que se trata de una función de devolución de llamada que se pasa a la función de orden superior de getTea().

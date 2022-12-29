@@ -1,0 +1,17 @@
+Caso de punción lumbar
+
+Convierte una cuerda en una caja espinal. El caso espinal es todo-palabras-en-minúsculas-unidas-por-guiones.
+
+
+
+
+function spinalCase(str) {
+  return str
+    .split(/\s|_|(?=[A-Z])/)
+    .join("-")
+    .toLowerCase();
+}
+  
+
+
+spinalCase('This Is Spinal Tap');

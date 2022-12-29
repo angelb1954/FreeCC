@@ -1,0 +1,78 @@
+Refactorizar variables globales fuera de funciones
+
+Hasta ahora, hemos visto dos principios distintos para la programación funcional:
+
+No altere una variable u objeto: cree nuevas variables y objetos y devuélvalos si es necesario desde una función. Sugerencia: usar algo como const newArr = arrVar, where arrVaris a array simplemente creará una referencia a la variable existente y no una copia. Entonces, cambiar un valor en newArrcambiaría el valor en arrVar.
+
+Declarar parámetros de función: cualquier cálculo dentro de una función depende solo de los argumentos pasados ​​a la función, y no de ningún objeto o variable global.
+
+Sumar uno a un número no es muy emocionante, pero podemos aplicar estos principios cuando trabajamos con matrices u objetos más complejos.
+
+Vuelva a escribir el código para que la matriz global bookListno cambie dentro de ninguna función. La addfunción debe agregar lo dado bookNameal final de la matriz que se le pasó y devolver una nueva matriz (lista). La removefunción debe eliminar lo dado bookNamede la matriz que se le pasó.
+
+Nota: Ambas funciones deben devolver una matriz y cualquier parámetro nuevo debe agregarse antes del bookNameparámetro.
+
+
+
+
+// Solución 1 
+
+// the global variable
+var bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+/* Esta función debería agregar un libro a la lista y devolver la lista */
+// Los nuevos parámetros deben venir antes de bookName
+
+// Add your code below this line
+function add(arr, bookName) {
+  let newArr = [...arr]; // Copie la matriz bookList en una nueva matriz.
+  newArr.push(bookName); // Agregue el parámetro bookName al final de la nueva matriz.
+  return newArr; // Return el newArray.
+}
+
+/* Esta función debería eliminar un libro de la lista y devolver la lista */
+// Los nuevos parámetros deben aparecer antes que el nombre del libro.
+// Add your code below this line
+function remove(arr, bookName) {
+  let newArr = [...arr]; // Copie la matriz bookList en una nueva matriz.
+  if (newArr.indexOf(bookName) >= 0) {
+    // Comprueba si el parámetro bookName está en una nueva matriz..
+    newArr.splice(newArr.indexOf(bookName), 1); // Elimina el parámetro dado de la nueva matriz.
+    return newArr; // Devuelve la nueva matriz.
+  }
+}
+
+var newBookList = add(bookList, 'A Brief History of Time');
+var newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
+var newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies');
+
+console.log(bookList);
+
+
+
+// Solución 2 
+
+// the global variable
+var bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+/* Esta función debe agregar un libro a la lista y devolver la lista */
+// Los nuevos parámetros deben venir antes de bookName
+
+function add(list, bookName) {
+  return [...list, bookName];
+}
+
+/* Esta función debería eliminar un libro de la lista y devolver la lista */
+// Los nuevos parámetros deben aparecer antes que el nombre del libro.
+
+function remove(list, bookName) {
+  return list.filter(book => book !== bookName);
+}
+
+
+console.log(bookList);
+
+var newBookList = add(bookList, 'A Brief History of Time');
+var newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
+var newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies');
+

@@ -1,0 +1,29 @@
+Buscar y destruir
+Se le proporcionará una matriz inicial (el primer argumento de la destroyerfunción), seguida de uno o más argumentos. Elimina todos los elementos de la matriz inicial que tengan el mismo valor que estos argumentos.
+
+Nota: Tienes que usar el argumentsobjeto.
+
+
+
+function destroyer(arr, ...valsToRemove) {
+  return arr.filter(elem => !valsToRemove.includes(elem));
+}
+// Código Explicación
+// Uso del operador de propagación para recuperar los argumentos.
+// Devuelve la matriz filtrada, usando includes().
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+
+Otra solución:
+
+function destroyer(arr) {
+  const valsToRemove = Array.from(arguments).slice(1);
+  return arr.filter(function(val) {
+    return !valsToRemove.includes(val);
+  });
+}
+Código Explicación
+Declare una variable con nombre valsToRemovey configúrela igual a un nuevo Arrayobjeto pasado a la función from(). argumentsUse el slice()método en la matriz de argumentos, comenzando desde el segundo índice, 1.
+
+Devuelve la matriz filtrada, usando includes()la función de devolución de llamada para verificar si noval está en ; regresando para mantener el valor en la matriz original o para eliminarlo.valsToRemovetruefalse

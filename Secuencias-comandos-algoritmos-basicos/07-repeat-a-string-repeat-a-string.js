@@ -1,6 +1,6 @@
-Repetir una cadena Repetir una cadena
+// Repetir una cadena Repetir una cadena
 
-Repetir una cadena dada str(primer argumento) por numtiempos (segundo argumento). Devuelve una cadena vacía si numno es un número positivo. A los efectos de este desafío, no utilice el .repeat()método incorporado.
+// Repetir una cadena dada str(primer argumento) por numtiempos (segundo argumento). Devuelve una cadena vacía si numno es un número positivo. A los efectos de este desafío, no utilice el .repeat()método incorporado.
 
 
 

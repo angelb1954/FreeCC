@@ -1,0 +1,18 @@
+Diferenciar dos matrices
+
+Compare dos matrices y devuelva una nueva matriz con cualquier elemento que solo se encuentre en una de las dos matrices dadas, pero no en ambas. En otras palabras, devuelva la diferencia simétrica de las dos matrices.
+
+Nota: puede devolver la matriz con sus elementos en cualquier orden.
+
+
+
+
+
+
+function diffArray(arr1, arr2) {
+  let newArr = [];
+  newArr= arr1.concat (arr2);
+return newArr.filter(elem=> ! (arr1.includes (elem) && arr2.includes(elem)));
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);

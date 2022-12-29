@@ -1,9 +1,9 @@
-Find the longest word in a string
+// Find the longest word in a string
 
 
-Returns the length of the longest word in the given sentence.
+// Returns the length of the longest word in the given sentence.
 
-Your answer must be a number.
+// Your answer must be a number.
 
 
 

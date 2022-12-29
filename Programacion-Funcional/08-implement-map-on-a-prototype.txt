@@ -1,0 +1,67 @@
+Implementar mapa en un prototipo
+
+Como ha visto al aplicar Array.prototype.map(), o simplemente map()antes, el mapmétodo devuelve una matriz de la misma longitud que la que se invocó. Tampoco altera la matriz original, siempre que su función de devolución de llamada no lo haga.
+
+En otras palabras, mapes una función pura y su salida depende únicamente de sus entradas. Además, toma otra función como argumento.
+
+Puede aprender mucho sobre el mapmétodo si implementa su propia versión. Se recomienda utilizar un forbucle o Array.prototype.forEach().
+
+Escribe el tuyo propio Array.prototype.myMap(), que debería comportarse exactamente como Array.prototype.map(). No debe utilizar el método integrado map. ArraySe puede acceder a la instancia en el myMapmétodo usando this.
+
+
+
+
+Array.prototype.myMap = function(callback) {
+  const newArray = [];
+  // Only change code below this line
+for (let i = 0; i < this.length; i++) {
+    newArray.push(callback(this[i], i, this));
+  }
+  // Only change code above this line
+  return newArray;
+};
+
+Código Explicación
+Resuelve este desafío usando un bucle "for" ythis
+
+El uso de un bucle "for" nos permite aplicar la función de devolución de llamada a cada elemento de la matriz global y luego enviar los elementos modificados a la nueva matriz vacía que se devuelve al final.
+
+Enlaces relevantes
+este. JavaScript MDN 2.0k
+
+este. Javascript W3Escuelas 494
+para bucle MDN 55
+Array.prototype MDN 252
+
+
+
+
+// Solución 2
+
+ 
+Array.prototype.myMap = function (callback) {
+  const newArray = [];
+  // Only change code below this line
+  this.forEach((element, index, originalArr) =>
+    newArray.push(callback(element, index, originalArr))
+  );
+  // Only change code above this line
+  return newArray;
+};
+Código Explicación
+Resuelve este desafío usando thisy el método forEach
+
+La thispalabra clave nos da acceso al objeto al que llamamos myMap.
+
+A partir de ahí, podemos usar el método forEach para agregar elementos a una matriz vacía ya declarada a medida que modificamos cada elemento con el método de devolución de llamada dado.
+
+Enlaces relevantes
+MDN: thispalabra clave 2.0k
+
+Explicación suave de "esto" en JavaScript 922
+
+MDN: Detalles del modelo de objetos 367
+
+MDN: Herencia y cadena de prototipos 354
+
+

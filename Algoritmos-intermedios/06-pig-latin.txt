@@ -1,0 +1,143 @@
+Jerga
+
+Pig Latin es una forma de alterar palabras en inglés. Las reglas son las siguientes:
+
+- Si una palabra comienza con una consonante, tome la primera consonante o grupo de consonantes, muévala al final de la palabra y añádala ay.
+
+- Si una palabra comienza con una vocal, solo agregue wayal final.
+
+Traduce la cadena provista a Pig Latin. Se garantiza que las cadenas de entrada son palabras en inglés en minúsculas.
+
+
+
+Solución 1
+
+function translatePigLatin(str) {
+  let consonantRegex = /^[^aeiou]+/;
+  let myConsonants = str.match(consonantRegex);
+  return myConsonants !== null
+    ? str
+        .replace(consonantRegex, "")
+        .concat(myConsonants)
+        .concat("ay")
+    : str.concat("way");
+}
+
+translatePigLatin("consonant");
+
+Código Explicación
+
+comience por el principio y obtenga la coincidencia más larga de todo lo que no sea una vocal (consonantes)
+
+si se encuentra un patrón de expresiones regulares, guarda la coincidencia; de lo contrario, devuelve nulo
+
+si se encuentra un patrón de expresiones regulares (comienza con consonantes), elimina la coincidencia, agrega la coincidencia al final y agrega "ay" al final
+
+si no se encuentra el patrón de expresión regular (comienza con vocales), simplemente agrega "camino" al final
+
+Enlaces relevantes
+Coincidencia de expresiones regulares 610
+Operador Ternario 359
+concat() 157
+
+Solución 2 
+
+function translatePigLatin(str) {
+  // Create variables to be used
+  var pigLatin = "";
+  var regex = /[aeiou]/gi;
+
+  // Check if the first character is a vowel
+  if (str[0].match(regex)) {
+    pigLatin = str + "way";
+  } else if (str.match(regex) === null) {
+    // Check if the string contains only consonants
+    pigLatin = str + "ay";
+  } else {
+    // Find how many consonants before the first vowel.
+    var vowelIndice = str.indexOf(str.match(regex)[0]);
+
+    // Take the string from the first vowel to the last char
+    // then add the consonants that were previously omitted and add the ending.
+    pigLatin = str.substr(vowelIndice) + str.substr(0, vowelIndice) + "ay";
+  }
+
+  return pigLatin;
+}
+
+// test here
+translatePigLatin("consonant");
+
+Código Explicación
+
+Haga una cadena vacía para contener su palabra Pig Latin.
+Asigne su expresión regular apropiada a una variable.
+Si el primer carácter es una vocal, simplemente agregue way to end of string y devuélvalo.
+Si el primer carácter no es una vocal:
+Encuentre el número de consonantes antes de la primera vocal con la ayuda de indexOf()y match()expresiones regulares.
+Comience la cadena Pig Latin con la primera vocal hasta el final.
+Agregue letras antes de la primera vocal al final de la cadena.
+substr()se utiliza aquí para la manipulación de cadenas.
+Agregue ay al final de la cadena y devuélvalo.
+Enlaces relevantes
+Recursos de expresión regular JS 450
+Prototipo de cadena JS IndexOf 123
+Substr de prototipo de cadena JS 620
+
+Solución 3 
+
+function translatePigLatin(str) {
+  if (str.match(/^[aeiou]/)) return str + "way";
+
+  const consonantCluster = str.match(/^[^aeiou]+/)[0];
+  return str.substring(consonantCluster.length) + consonantCluster + "ay";
+}
+
+// test here
+translatePigLatin("consonant");
+
+Código Explicación
+
+Primero, verifique si la cadena comienza con una vocal.
+La expresión regular busca al principio de la cadena ^uno de los caracteres especificados[aeiou]
+Si es así, solo necesita devolver la cadena original con "camino" añadido al final.
+Si la cadena no comienza con una vocal, queremos construir una cadena que contenga todas las consonantes antes de la primera vocal en la cadena proporcionada.
+Para hacer esto, busque al principio de una cadena ^uno o más caracteres +NO especificados [^aeiou].
+Si hay una coincidencia (y en este caso, siempre la habrá), match()devuelve un Array con la cadena coincidente como primer elemento, que es todo lo que queremos. Agárralo con [0].
+Ahora, podemos comenzar a construir nuestra cadena Pig Latin para regresar. Esto se puede construir en tres partes:
+La primera parte contiene todos los caracteres de la cadena original, comenzando por la primera vocal. Podemos obtener fácilmente estos caracteres creando una subcadena de la cadena original, siendo su índice inicial la primera vocal.
+La segunda parte contiene la cadena de consonantes que acabamos de construir. (Si suma la segunda y la primera parte de esta cadena, obtendrá la cadena original).
+La parte final contiene "ay".
+Enlaces relevantes
+Recursos de expresión regular JS 450
+Cadena.prototipo.match() 94
+Substr de prototipo de cadena JS 620
+
+Solución 4 
+
+function translatePigLatin(str) {
+  return str
+    .replace(/^[aeiou]\w*/, "$&way")
+    .replace(/(^[^aeiou]+)(\w*)/, "$2$1ay");
+}
+
+// test here
+translatePigLatin("consonant");
+
+Código Explicación
+
+Use replace()en la cadena, usando una expresión regular para verificar si la primera letra es una consonante y agregando una forma al final en este caso. Si la primera letra es una consonante no pasará nada en este punto.
+Use replace()de nuevo para buscar consonantes al principio de la palabra y para moverlas al final de la palabra y agregar ay al final.
+Enlaces relevantes
+Referencia de expresiones regulares 818
+Recursos de expresiones regulares 387
+
+Solución 5 
+
+function translatePigLatin(str, charPos = 0) {
+  return ['a', 'e', 'i', 'o', 'u'].includes(str[0])
+    ? str + (charPos === 0 ? 'way' : 'ay')
+    : charPos === str.length
+      ? str + 'ay'
+      : translatePigLatin(str.slice(1) + str[0], charPos + 1);
+}
